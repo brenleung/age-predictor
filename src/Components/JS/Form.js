@@ -34,7 +34,7 @@ export default function Form({text}) {
                 <Button text={"Submit"}/>
             </form>
 
-            <p>You are going to live to be {results.age} years old. Do you have enough time to live?</p>
+            {submitted && results && <p>Hey {results.name}, you are going to live to be {results.age} years old. Do you have enough time to live?</p>}
         </div>
     )
 }
