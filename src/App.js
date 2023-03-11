@@ -1,23 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
+import Form from "../src/Components/JS/Form.js"
+import React, { useEffect, useState } from "react";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h3>Predict My Age</h3>
+      <p>Ever wanted to figure out how old you're going to live until? Well, it's your lucky day. Or maybe not.
+      <br></br>Simply type your name below (first or last only) and then hit submit to see your age!</p>
+      <Form/>
     </div>
   );
 }
