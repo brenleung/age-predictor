@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Age Predictor
+
+This project was created for a take-home assessment. It is one of the first React apps I created. It is based off of the Agify API, where upon the input of a name from the user, it will return the age of the user! For this app, the age represents how long the user will live.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
