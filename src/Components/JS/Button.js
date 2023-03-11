@@ -13,6 +13,10 @@ const StyledButton = styled.button `
     border-radius: 8px;
     color: white;
     cursor: pointer;
+
+    &:hover {
+        background-color: #632585;
+    }
 `
 
 export default function Button({text}) {

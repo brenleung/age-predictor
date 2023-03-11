@@ -9,11 +9,20 @@ export default function Form({text}) {
     const [name, setName] = useState("");  // name
     const [results, setResults] = useState([]); // results set in array
     const [submitted, setSubmitted] = useState(false); // did the user submit yet?
+    const [error, setError] = useState(false);  // if the user input an error
 
     const handleSubmit = (event) => {
         event.preventDefault();  // don't reload the page
+
+        if (name === "" || (name.indexOf(' ') >= 0)) {
+            setError(true);
+            setSubmitted(false);
+            return;
+        }
+
         axios.get(`https://api.agify.io?name=${name}`)  // gets from agify api
         .then(response => {
+            setError(false);
             setResults(response.data); // get response
             setSubmitted(true);
         })
@@ -22,8 +31,8 @@ export default function Form({text}) {
         });
     }
 
-    return (
-        <div>
+    return ( 
+        <div> 
             <form onSubmit = {handleSubmit}>
                 <label>
                     Name<input type="text" value={name} placeholder="John" onChange={(event) => setName(event.target.value)} />
@@ -34,7 +43,10 @@ export default function Form({text}) {
                 <Button text={"Submit"}/>
             </form>
 
-            {submitted && results && <p>Hey {results.name}, you are going to live to be {results.age} years old. Do you have enough time to live?</p>}
+            {/* below: error and submitted messages */}
+            {error && <div class="error"><p>Please submit a name, but not a name with whitespace.</p></div>}
+            
+            {submitted && results && <div class="submitted"><p>Hey <strong>{results.name}</strong>, you are going to live to be <strong>{results.age}</strong> years old. Do you have enough time to live?</p></div>}
         </div>
     )
 }

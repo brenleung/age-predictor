@@ -1,6 +1,5 @@
 import './App.css';
 import Form from "../src/Components/JS/Form.js"
-import React, { useEffect, useState } from "react";
 
 function App() {
   return (
