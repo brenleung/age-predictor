@@ -44,9 +44,9 @@ export default function Form({text}) {
             </form>
 
             {/* below: error and submitted messages */}
-            {error && <div class="error"><p>Please submit a name, but not a name with whitespace.</p></div>}
+            {error && <p class="error">Please submit a name. Make sure it does not have whitespace.</p>}
             
-            {submitted && results && <div class="submitted"><p>Hey <strong>{results.name}</strong>, you are going to live to be <strong>{results.age}</strong> years old. Do you have enough time to live?</p></div>}
+            {submitted && results && <p>Hey <strong>{results.name}</strong>, you are going to live to be <strong>{results.age}</strong> years old. Do you have enough time to live?</p>}
         </div>
     )
 }
