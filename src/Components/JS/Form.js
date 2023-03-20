@@ -22,9 +22,15 @@ export default function Form({text}) {
 
         axios.get(`https://api.agify.io?name=${name}`)  // gets from agify api
         .then(response => {
-            setError(false);
-            setResults(response.data); // get response
-            setSubmitted(true);
+            if (response.data.age === null) {
+                setError(true);
+                setSubmitted(false);
+            }
+            else {
+                setError(false);
+                setSubmitted(true);
+                setResults(response.data); // get response
+            }
         })
         .catch(error => {
             console.error(error);  // if there's an error
@@ -32,10 +38,10 @@ export default function Form({text}) {
     }
 
     return ( 
-        <div> 
+        <div class="form"> 
             <form onSubmit = {handleSubmit}>
                 <label>
-                    Name<input type="text" value={name} placeholder="John" onChange={(event) => setName(event.target.value)} />
+                    <input type="text" value={name} placeholder="Insert name here.." onChange={(event) => setName(event.target.value)} />
                 </label>
 
                 <br></br>
@@ -44,9 +50,9 @@ export default function Form({text}) {
             </form>
 
             {/* below: error and submitted messages */}
-            {error && <p class="error">Please submit a name. Make sure it does not have whitespace.</p>}
+            {error && <p class="error">Please submit a valid name. Make sure it does not have whitespace.</p>}
             
-            {submitted && results && <p>Hey <strong>{results.name}</strong>, you are going to live to be <strong>{results.age}</strong> years old. Do you have enough time to live?</p>}
+            {submitted && results && <p class="result">Hey <strong>{results.name}</strong>, you are going to live to be <strong>{results.age+10}</strong> years old. Do you have enough time to live?</p>}
         </div>
     )
 }
