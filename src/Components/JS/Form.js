@@ -14,7 +14,7 @@ export default function Form({text}) {
     const handleSubmit = (event) => {
         event.preventDefault();  // don't reload the page
 
-        if (name === "" || (name.indexOf(' ') >= 0)) {
+        if (name === "" || (name.indexOf(' ') >= 0 && name.indexOf(' ') < name.length-1)) {
             setError(true);
             setSubmitted(false);
             return;
